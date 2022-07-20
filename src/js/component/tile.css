@@ -1,0 +1,35 @@
+#tile1 {
+    width: 30%;
+    height: 150px;
+    font-size: 60px;
+    background: gainsboro;
+    border: 5px solid black;
+    display:inline-flex;
+
+    text-align: center;
+    line-height: 150px;
+    margin-bottom: 0%;
+
+}
+
+.container {
+    background-color: black;
+    text-align: center;
+    color:gainsboro;
+    padding-bottom: 150px;
+    padding-top: 20px;
+}
+
+.title {
+    margin-top: 20px;
+}
+
+.reset {
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+    
+}

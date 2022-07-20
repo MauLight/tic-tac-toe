@@ -1,26 +1,64 @@
-import React from "react";
+import React, {Component} from 'react';
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
 
-//create your first component
-const Home = () => {
-	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
-};
+import Announcement from './announcement';
+import Reset from './reset';
+import Tile from './tile';
 
-export default Home;
+class Home extends Component {
+    constructor() {
+        super();
+        this.state = {
+            gameBoard: [
+                'x','o','',
+                '','','',
+                '','',''
+            ],
+            turn:'x',
+            winner: null,
+
+        }
+    }
+
+    updateBoard(loc, player) {
+
+    };
+
+    resetBoard() {
+        this.setState({
+            gameBoard: [
+                '','','',
+                '','','',
+                '','',''
+            ],
+            turn:'x',
+            winner: null,
+        })
+    }
+
+    render() {
+        return (
+            <div className="container">
+                <div className="menu">
+                    <h1 className='title'>Tic Tac toe</h1>
+                    <Announcement  winner= {this.state.winner} />
+                    <Reset reset={this.resetBoard.bind(this)} />
+                </div>
+                {this.state.gameBoard.map(function(value, i){
+                    return (
+                        <Tile 
+                        key={i}
+                        loc={i}
+                        value={value}
+                        updateBoard={this.updateBoard.bind(this)}
+                        turn={this.state.turn}
+                        /> 
+                    )
+
+                }.bind(this))}
+            </div>
+        )
+    }
+}
+
+export default Home
